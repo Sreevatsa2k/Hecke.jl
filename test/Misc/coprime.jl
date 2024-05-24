@@ -18,4 +18,16 @@
 
 @test Hecke.pair_bach(2, 3) == [2, 3]
 
+@test Hecke.coprime_base_bernstein([ZZ(1000000), ZZ(2000000)]) == [15625, 2]
+
+@test Hecke.merge_bernstein([ZZ(1000000), ZZ(2000000)], [ZZ(3000000), ZZ(4000000)]) == [3, 4, 15625, 2, 15625]
+
+@test Hecke.augment_bernstein([ZZ(1000000), ZZ(2000000)], ZZ(2)) == [15625, 2, 15625, 2]
+
+@test sort(Hecke.split_bernstein(ZZ(2), [ZZ(1000000), ZZ(2000000)])) == [(1000000, 2), (2000000, 2)]
+
+@test Hecke.augment_bach([ZZ(20), ZZ(30)], ZZ(2)) == [5, 15, 2]
+
+@test Hecke.coprime_base_bach([ZZ(2000000), ZZ(3000000)]) == [2, 15625, 3]
+
 end
