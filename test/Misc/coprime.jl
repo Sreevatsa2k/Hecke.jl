@@ -4,6 +4,8 @@
 
 @test Hecke.mul_into!(ZZ(2), ZZ(3), ZZ(4)) == 12
 
+@test Hecke.copy_into!([2,3], [4,5]) == [4,5]
+
 @test Hecke.copy_into!(2, 3) == 3
 
 @test Hecke.copy_into!(ZZ(2), ZZ(3)) == 3
@@ -15,6 +17,8 @@
 @test Hecke.pair_bernstein(ZZ(1000000), ZZ(2000000)) == [15625, 1, 1, 1, 1, 2]
 
 @test Hecke._my_eval(2, 3) == 2
+
+@test Hecke.my_eval([2, 3], 3) == 11
 
 @test Hecke.pair_bach(2, 3) == [2, 3]
 
