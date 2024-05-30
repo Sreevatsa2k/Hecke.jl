@@ -56,7 +56,7 @@
     @test preimage(mu, 2) == u[2]
 
     u, mu = sunit_group_fac_elem([2,3]);
-    @test preimage(mu, 2//3) == u[2//3]
+    @test preimage(mu, 2//3) == u[2] - u[3]
 
     u, mu = sunit_group([2]);
     @test preimage(mu, 2) == u[2]
