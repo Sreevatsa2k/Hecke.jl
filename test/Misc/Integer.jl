@@ -35,7 +35,7 @@
 
     @test Hecke.ecm(ZZ(2)) == (0,2)
 
-    @test carmichael_lambda(Hecke.factor(ZZ(80))) == 4
+    @test carmichael_lambda(factor(ZZ(80))) == 4
 
     @test euler_phi(factor(FacElem(factor(ZZ(2))))) == 1
 
@@ -67,5 +67,9 @@
     @test evaluate(factor(FacElem(factor(ZZ(100))))) == ZZ(100)
 
     @test evaluate(FacElem(factor(ZZ(100)))) == ZZ(100)
+
+    
+
+     
 
 end
