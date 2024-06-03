@@ -68,8 +68,16 @@
 
     @test evaluate(FacElem(factor(ZZ(100)))) == ZZ(100)
 
-    
+    @test sort(collect(Divisors(FacElem(factor(ZZ(20)))))) == ZZ.([1, 2, 4, 5, 10, 20])
 
-     
+    @test sort(collect(Divisors(factor(ZZ(20))))) == ZZ.([1, 2, 4, 5, 10, 20])
+
+    Qx, x = polynomial_ring(FlintQQ, "x");
+    K, a = number_field(x^2 + 1, "a");
+    A = ideal(EquationOrder(K), ZZ(23));
+    C = ideal(EquationOrder(K), ZZ(1));
+    @test collect(Divisors(A)) == [C, A]
+
+    
 
 end
