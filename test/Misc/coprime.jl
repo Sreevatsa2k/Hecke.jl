@@ -17,6 +17,14 @@ K, a = number_field(x^2 + 1, "a");
 L, b = number_field(x^2 - 2, "b");
 @test Hecke.copy_into!(minpoly(a), minpoly(b)) == x^2 - 2
 
+A = Hecke.ProdEnv{QQFieldElem}(3);
+Hecke.Base.push!(A, QQ(3//2));
+@test finish(A) == 3//2
+
+A = Hecke.EvalEnv{QQFieldElem}(QQ(3//2), 10);
+Base.push!(A, QQ(3//2));
+@test finish(A) == 3//2
+
 @test Hecke.ppgle(ZZ(100), ZZ(200)) == (100, 1, 100)
 
 @test Hecke.pair_bernstein(ZZ(1000000), ZZ(2000000)) == [15625, 1, 1, 1, 1, 2]
@@ -26,6 +34,23 @@ L, b = number_field(x^2 - 2, "b");
 @test Hecke.my_eval([2, 3], 3) == 11
 
 @test Hecke.pair_bach(2, 3) == [2, 3]
+
+Qx, x = polynomial_ring(QQ, "x");
+@test Hecke.pair_bach(x^2, x^2 + 1) == [x^2, x^2 + 1]
+
+Qx, x = polynomial_ring(QQ, "x");
+@test Hecke.coprime_base_bach([x^2, x^2 + 1]) == [x^2, x^2 + 1]
+
+Qx, x = polynomial_ring(QQ, "x");
+@test Hecke.ppgle(x^2, x^2 + 1) == (1, x^2, 1)
+
+Qx, x = polynomial_ring(QQ, "x");
+@test Hecke.pair_bernstein(x^2, x^2 + 1) == [x^2, x^2 + 1]
+
+Qx, x = polynomial_ring(QQ, "x");
+@test Hecke.split_bernstein(x, [x^2, x^2 + 1]) == [(x^2 + 1, 1), (x^2, x)]
+
+@test Hecke.coprime_base_bernstein([QQ(3//2)]) == [QQ(3//2)]
 
 @test Hecke.coprime_base_bernstein([ZZ(1000000), ZZ(2000000)]) == [15625, 2]
 
@@ -40,5 +65,6 @@ L, b = number_field(x^2 - 2, "b");
 @test Hecke.augment_bach([ZZ(20), ZZ(30)], ZZ(2)) == [5, 15, 2]
 
 @test Hecke.coprime_base_bach([ZZ(2000000), ZZ(3000000)]) == [2, 15625, 3]
+
 
 end
