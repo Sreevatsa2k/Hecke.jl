@@ -98,5 +98,18 @@
     expected = [C,A];
     @test expected == result
 
+    io = IOBuffer();
+    u, mu = sunit_group_fac_elem([2]);
+    show(io, mu);
+    actual_output = String(take!(io));
+    expected_output = "SUnits (in factored form) map of $(codomain(mu)) for $(mu.idl)\n";
+    @test actual_output == expected_output
+
+    io = IOBuffer();
+    u, mu = sunit_group([2]);
+    show(io, mu);
+    actual_output = String(take!(io));
+    expected_output = "SUnits map of $(codomain(mu)) for $(mu.idl)\n";
+    @test actual_output == expected_output
 
 end
